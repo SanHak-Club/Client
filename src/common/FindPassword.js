@@ -36,7 +36,7 @@ function FindPassword({ setModalContent }) {
   const find = () => {
     axios
       .post(
-        "http://localhost:8000/auth/find", //DB 프로젝트에서 가져옴
+        "http://localhost:8080/auth/find", //DB 프로젝트에서 가져옴
         {
           employNumber: inputEmployNumber,
           username: inputUserName,
@@ -55,7 +55,7 @@ function FindPassword({ setModalContent }) {
         console.log(res);
         setErrorText("");
         setSuccessText("비밀번호 :");
-        setFoundPassword(res.data.userPassword.password);
+        setFoundPassword(res.data.password);
         setTimeout(alertFunc, 2000); //2초후에 실행
       })
       .catch((err) => {

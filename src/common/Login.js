@@ -41,14 +41,14 @@ function Login({
   const login = () => {
     axios
       .post(
-        "http://localhost:8000/auth/login",
+        "http://localhost:8080/auth/login",
         {
           employNumber: inputEmployNumber,
           password: inputPassword,
         },
         {
           headers: {
-            "Content-type": "application/x-www-form-urlencoded",
+            "Content-type": "application/json",
             Accept: "application/json",
           },
         }
@@ -59,7 +59,7 @@ function Login({
         navigate("/search");
         setMyEmployNumber(inputEmployNumber);
         setMyUserName(res.data.username);
-        if (jwt_decode(res.data.access_token).adminkey) {
+        if (jwt_decode(res.data.access_token).aud === "1") {
           setAuth(2);
         } else {
           setAuth(1);

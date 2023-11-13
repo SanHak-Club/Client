@@ -17,7 +17,7 @@ function MyPassword({ myEmployNumber, setPasswordModal, token }) {
   const check = () => {
     axios
       .post(
-        "http://localhost:8000/auth/check",
+        "http://localhost:8080/auth/reconfirm",
         {
           employNumber: myEmployNumber,
           password: inputPassword,

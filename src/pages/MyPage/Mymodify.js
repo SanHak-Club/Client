@@ -23,7 +23,7 @@ function Mymodify(
   } else {
     axios
       .post(
-        "http://localhost:8000/auth/modify",
+        "http://localhost:8080/auth/modify",
         {
           employNumber: myEmployNumber,
           password: inputOldPassword,
