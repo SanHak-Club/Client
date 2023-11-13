@@ -37,7 +37,7 @@ function Register({ setModalContent }) {
   const regist = () => {
     axios
       .post(
-        "http://localhost:8000/auth/register", //DB 프로젝트에서 가져옴
+        "http://localhost:8080/auth/register", //DB 프로젝트에서 가져옴
         {
           employNumber: inputEmployNumber,
           password: inputPassword,
