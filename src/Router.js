@@ -8,6 +8,7 @@ import MyPage from "./pages/MyPage/MyPage";
 import Modal from "./common/Modal";
 import PrivateRoute from "./PrivateRoute";
 import AdminPrivateRoute from "./common/AdminPrivateRoute";
+import CadDetailPage from "./pages/CadDetailpage/CadDetailPage";
 
 function Router() {
   const [testMode, setTestMode] = useState(false);
@@ -25,7 +26,6 @@ function Router() {
   const [myPhoneNumber, setMyPhoneNumber] = useState("");
   const [myEmail, setMyEmail] = useState("");
   const [myBirthday, setMyBirthday] = useState("");
-
   return (
     <div class="flex flex-col font-[GmarketSansMedium]">
       <BrowserRouter>
@@ -53,7 +53,7 @@ function Router() {
             setPasswordModal={setPasswordModal}
           />
         </div>
-        <div className=" h-full w-full flex justify-center overflow-y-auto">
+        <div className=" h-full w-full flex justify-center overflow-y-auto pt-[80px]">
           <div className="h-full w-full bg-white">
             <Routes>
               <Route
@@ -133,6 +133,15 @@ function Router() {
                         setMyBirthday={setMyBirthday}
                       />
                     }
+                  />
+                }
+              />
+              <Route
+                path="/cad/:id"
+                element={
+                  <PrivateRoute
+                    authenticated={auth}
+                    component={<CadDetailPage />}
                   />
                 }
               />

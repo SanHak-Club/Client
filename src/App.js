@@ -1,10 +1,14 @@
 import "./App.css";
 import Router from "./Router";
+import { OutputContext } from "./contextAPI/OutputContext";
+import { useState } from "react";
+
 function App() {
+  const [output, setOutput] = useState([]);
   return (
-    <div>
+    <OutputContext.Provider value={{ output, setOutput }}>
       <Router />
-    </div>
+    </OutputContext.Provider>
   );
 }
 

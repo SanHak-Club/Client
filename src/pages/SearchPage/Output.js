@@ -1,8 +1,10 @@
 import { AiOutlineArrowUp, AiOutlineArrowDown } from "react-icons/ai";
 import cryptoJs from "crypto-js";
+import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { OutputContext } from "../../contextAPI/OutputContext";
+
 function Output({
-  output,
-  setOutput,
   highlightIndex,
   detailModal,
   setDetailModal,
@@ -16,7 +18,9 @@ function Output({
 }) {
   const REGION = "ap-northeast-2";
   const S3_BUCKET = "dwg-upload";
-
+  const navigate = useNavigate();
+  const { setOutput } = useContext(OutputContext);
+  const { output } = useContext(OutputContext);
   //////////////////////////////////////////////////////////
   const highlightedText = (text, query) => {
     if (query !== "" && text.includes(query)) {
@@ -65,7 +69,6 @@ function Output({
         <div
           className=" flex flex-col  w-[22.5%] items-center h-[300px] ml-[2%] mt-[2%]  flex-nowrap  focus:outline-none focus:ring-8 focus:ring-[#f1f6fe] rounded-[6px] border cursor-pointer"
           onClick={() => {
-            setDetailModal(true);
             setImage(imgURL);
             setIndex(highlightedText(indexlist.join(","), highlightIndex));
             setTitle(highlightedText(filelist[i].title, highlightIndex));
@@ -78,6 +81,7 @@ function Output({
             setAuthor(filelist[i].author);
             setDate(filelist[i].createdAt);
             setFileURL(fileURL);
+            navigate(`/cad/${filelist[i].id}`);
           }}
         >
           <img
@@ -223,7 +227,7 @@ function Output({
           검색결과가 없습니다.
         </div>
       ) : (
-        <div className="flex flex-row flex-wrap   items-center w-[60%] h-full border rounded-[6px] overflow-y-scroll ">
+        <div className="flex flex-row flex-wrap   items-center w-[60%] h-full border rounded-[6px] overflow-y-auto custom-scrollbar ">
           {listitem(output)}
         </div>
       )}

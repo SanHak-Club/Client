@@ -25,7 +25,7 @@ function DetailModal({
             }
           }}
         >
-          <div className="z-25 w-1/3 h-[500px] bg-white fixed left-1/3 top-1/4 p-2.5 text-lg overflow-y-scroll">
+          <div className="z-25 w-1/3 h-[500px] bg-white fixed left-1/3 top-1/4 p-2.5 text-lg overflow-y-auto custom-scrollbar">
             <Detail
               image={image}
               index={index}

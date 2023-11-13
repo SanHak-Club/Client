@@ -1,15 +1,12 @@
 import axios from "axios";
+import { OutputContext } from "../../contextAPI/OutputContext";
+import { useContext } from "react";
 
-function Search({
-  searchIndex,
-  setSearchIndex,
-  setOutput,
-  output,
-  setHighlightIndex,
-}) {
+function Search({ searchIndex, setSearchIndex, setHighlightIndex }) {
   const onchangesearchindex = (e) => {
     setSearchIndex(e.target.value);
   };
+  const { setOutput } = useContext(OutputContext);
   const handleSubmit = (e) => {
     //로컬서버에 검색 인덱스 전달하는 함수
     // form 안에 input을 전송할 때 페이지 리로드 되는 걸 막아줌
