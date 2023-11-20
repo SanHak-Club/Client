@@ -53,7 +53,7 @@ function Router() {
             setPasswordModal={setPasswordModal}
           />
         </div>
-        <div className=" h-full w-full flex justify-center overflow-y-auto pt-[80px]">
+        <div className=" h-full w-full flex justify-center  pt-[80px]">
           <div className="h-full w-full bg-white">
             <Routes>
               <Route

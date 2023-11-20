@@ -6,7 +6,6 @@ function CadInfo({ id }) {
   const S3_BUCKET = "dwg-upload";
   const { output } = useContext(OutputContext);
   const matchedOutput = output.find((item) => item.id === id);
-
   const fileURL = `https://${S3_BUCKET}.s3.${REGION}.amazonaws.com/${matchedOutput.mainCategory}${matchedOutput.subCategory}/${matchedOutput.title}`;
   let indexlist = matchedOutput.index.split("|");
   return (
@@ -19,6 +18,9 @@ function CadInfo({ id }) {
       </div>
       <div className="w-full h-[10%] border-b text-[15px] truncate text-center mb-4">
         {matchedOutput.author}
+      </div>
+      <div className="w-full h-[10%] border-b text-[15px] truncate text-center mb-4">
+        {matchedOutput.cadLabel}
       </div>
       <div className="w-full h-[10%] border-b text-[15px] truncate text-center mb-4">
         작성날짜: {matchedOutput.createdAt}
